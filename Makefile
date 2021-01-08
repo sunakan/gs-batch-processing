@@ -14,6 +14,10 @@ include makefiles/help.mk
 ################################################################################
 # タスク
 ################################################################################
-.PHONY: deploy-docs
-deploy-docs: ## ドキュメントをデプロイする
-	git subtree push --prefix docs/html/ origin gh-pages
+.PHONY: build
+build:
+	docker-compose build
+
+.PHONY: bash
+bash:
+	docker-compose run --rm app bash
