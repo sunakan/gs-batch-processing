@@ -38,7 +38,7 @@ public class BatchConfiguration {
                 IntStream.range(1, 20).boxed().collect(Collectors.toList()));
 
         return stepBuilderFactory.get("step1")
-                .<Integer, Integer> chunk(5)
+                .<Integer, Integer>chunk(5)
                 .reader(reader)
                 .writer(items -> System.out.println(items))
                 .build();
