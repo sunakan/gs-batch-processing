@@ -24,3 +24,16 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task downloadDependencies {
+    doLast {
+        def allDeps = configurations.names.stream()
+            .map { configurations[it] }
+            .filter { it.isCanBeResolved() }
+            .map { it.resolve().size() }
+            .count()
+        println("---------------------------------------")
+        println("Downloaded all dependencies: ${allDeps}")
+        println("---------------------------------------")
+    }
+}
