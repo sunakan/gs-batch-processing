@@ -21,3 +21,7 @@ build:
 .PHONY: bash
 bash:
 	docker-compose run --rm app bash
+
+.PHONY: down
+down:
+	docker-compose down
