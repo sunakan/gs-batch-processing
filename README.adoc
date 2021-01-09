@@ -1,5 +1,9 @@
 = SpringBatchの練習
 
+src/main/resources/sample-data.csv
+
+を読み込んで、1行=1Personインスタンス、FirstName/LastNameを全部大文字にしてDBに突っ込む
+
 == 実行
 
 .00-build
