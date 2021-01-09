@@ -29,7 +29,10 @@ public class BatchConfiguration {
     StepBuilderFactory stepBuilderFactory;
 
     @Bean
-    public Job importUserJob(JobCompletionNotificationListener listener, Step step1) {
+    public Job importUserJob(JobCompletionNotificationListener listener, Step step1, SlackProperty slackProperty) {
+        System.out.println("=====[ Job1 begin]");
+        System.out.println(slackProperty.webhookUrl);
+        System.out.println("=====[ Job1 done]");
         return jobBuilderFactory.get("importUserJob")
                 .incrementer(new RunIdIncrementer())
                 .listener(listener)
@@ -39,7 +42,10 @@ public class BatchConfiguration {
     }
 
     @Bean
-    public Step step1(JdbcBatchItemWriter<Person> writer) {
+    public Step step1(JdbcBatchItemWriter<Person> writer, SlackProperty slackProperty) {
+        System.out.println("=====[ Step1 begin]");
+        System.out.println(slackProperty.webhookUrl);
+        System.out.println("=====[ Step1 done]");
         return stepBuilderFactory.get("step1")
                 .<Person, Person> chunk(10)
                 .reader(reader())
